@@ -1,12 +1,19 @@
 const express = require('express');
 const fetch = require('node-fetch');
+const cors = require('cors');
 
 require('dotenv').config({path: '../.env'});
 
 const { PORT } = require('../config');
+const {CLIENT_ORIGIN} = require('./config');
 
 const app = express();
 app.use(express.static('public'));
+app.use(
+  cors({
+      origin: CLIENT_ORIGIN
+  })
+);
 
 
 app.get('/people', (req, res) => {
