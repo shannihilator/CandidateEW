@@ -5,7 +5,7 @@ const cors = require('cors');
 require('dotenv').config({path: '../.env'});
 
 const { PORT } = require('../config');
-const {CLIENT_ORIGIN} = require('./config');
+const { CLIENT_ORIGIN } = require('../config');
 
 const app = express();
 app.use(express.static('public'));
@@ -17,6 +17,7 @@ app.use(
 
 
 app.get('/people', (req, res) => {
+  console.log('I ran');
 
   const baseUrl = 'https://api.salesloft.com/v2/people.json'
   const apiKey = process.env.API_KEY
