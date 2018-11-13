@@ -4,6 +4,7 @@ import List from './List';
 
 
 
+
 class People extends Component {
 
   constructor(props){
@@ -60,17 +61,27 @@ class People extends Component {
       );
     } else if (this.state.people.data) {
       const people = this.state.people.data.map((person, index) => (
-        <li className="list-wrapper" key={index}>
+        <tr className="list-wrapper" key={index}>
             <List
                 index={index}
                 {...person}
             />
-        </li>
+        </tr>
       ));
       body = (
-        <ul className="lists">
-            {people}
-        </ul>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Title</th>
+            </tr>
+
+          </thead>
+          <tbody className="lists">
+              {people}
+          </tbody>
+        </table>
       );
     } else {
       body = (
@@ -78,7 +89,8 @@ class People extends Component {
       )
     }
       return (
-        <div>{body}</div>
+
+        <div className="body">{body}</div>
       )
     }
 }

@@ -4,12 +4,11 @@ export default function List(props) {
   console.log(props);
 
   return (
-    <div>
-      <ul>
-        <li>{props.display_name}</li>
-        <li>{props.email_address}</li>
-        <li>{props.title}</li>
-      </ul>
-    </div>
+
+    <React.Fragment>
+      <td>{props.display_name}</td>
+      <td>{props.email_address}</td>
+      <td>{props.title}</td>
+    </React.Fragment>
   )
 }

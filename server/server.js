@@ -17,8 +17,6 @@ app.use(
 
 
 app.get('/people', (req, res) => {
-  console.log('I ran');
-
   const baseUrl = 'https://api.salesloft.com/v2/people.json'
   const apiKey = process.env.API_KEY
 
