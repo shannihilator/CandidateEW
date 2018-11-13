@@ -14,14 +14,15 @@ class People extends Component {
       people: [],
       loading: false,
       error: null,
+      count: null
     }
+
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
     this.loadPeopleList()
   }
-
-
 
   loadPeopleList() {
     this.setState({
@@ -29,7 +30,7 @@ class People extends Component {
     });
     return fetch(`${API_BASE_URL}/people`)
       .then(res => {
-        console.log(res.body);
+
         if(!res.ok) {
           return Promise.reject(res.statusText);
         }
@@ -48,6 +49,35 @@ class People extends Component {
         })
       );
   }
+
+
+
+  handleClick() {
+    console.log('clicked');
+    let emails;
+    if (!this.state.people.data) {
+      return null;
+    } else {
+      emails = []
+      this.state.people.data.map((item) => (
+        emails.push(item.email_address)
+      ));
+    }
+    let frequency = emails.join();
+    console.log(frequency);
+    let count = {};
+    for (let i=0; i<frequency.length;i++) {
+        var character = frequency.charAt(i);
+        if (count[character]) {
+            count[character]++;
+        } else {
+            count[character] = 1;
+        }
+    }
+
+     this.setState({count})
+  };
+
 
   render() {
     let body;
@@ -76,7 +106,6 @@ class People extends Component {
               <th>Email</th>
               <th>Title</th>
             </tr>
-
           </thead>
           <tbody className="lists">
               {people}
@@ -89,8 +118,13 @@ class People extends Component {
       )
     }
       return (
+        <React.Fragment>
+          <div className="body">{body}</div>
+          <div className="button-container">
+            <button onClick={this.handleClick}>Frequency Table</button>
+          </div>
+        </React.Fragment>
 
-        <div className="body">{body}</div>
       )
     }
 }
