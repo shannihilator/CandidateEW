@@ -1,13 +1,7 @@
 import React from 'react';
 
 const Frequency = (props) => {
-  // let char;
-  // let count;
   let obj = props.frequency
-  // for(let key in obj){
-  //   count = `${key}: ${obj[key]}`
-    // char = key;
-    // count = obj[key];
   let count = Object.keys(obj).map(function(key, index) {
       return (
         <tr key={index}>
@@ -18,19 +12,19 @@ const Frequency = (props) => {
         );
   })
 
-return (
-  <table>
-    <thead>
-      <tr>
-        <th>Character</th>
-        <th>Count</th>
-      </tr>
-    </thead>
-    <tbody>
-      {count}
-    </tbody>
-  </table>
-)
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th>Character</th>
+          <th>Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        {count}
+      </tbody>
+    </table>
+  )
 
 }
 

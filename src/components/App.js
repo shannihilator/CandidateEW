@@ -128,6 +128,7 @@ class App extends Component {
     }
       return (
         <React.Fragment>
+          <h1>SalesLoft Technical Evaluation</h1>
           <div className="body">{body}</div>
           <div className="button-container">
             <button onClick={this.handleClick}>Frequency Table</button>
