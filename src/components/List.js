@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function List(props) {
+const List = (props) => {
   return (
     <React.Fragment>
       <td>{props.display_name}</td>
@@ -9,3 +9,5 @@ export default function List(props) {
     </React.Fragment>
   )
 }
+
+export default List;
